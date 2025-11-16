@@ -1,15 +1,25 @@
-import { IconButton, InputBase, Paper } from "@mui/material";
+import { InputBase, Paper } from "@mui/material";
+import IconButton from "@mui/material/IconButton"
 import SearchIcon from '@mui/icons-material/Search';
-import { useState, type SetStateAction } from "react";
+import { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
+import React from "react";
+import { searchMovies } from "../features/movies/moviesApi";
+
 
 export const Search = () => {
   const [query, setQuery] = useState('');
-  const handleChangeQuery = (e: { target: { value: SetStateAction<string>; }; }) => {
-    setQuery(e.target.value)
-  };
+  const handleChangeQuery = useCallback((event: React.KeyboardEvent<HTMLInputElement>) => {
+    //@ts-expect-error
+    setQuery(event.target.value);
+  }, [setQuery]);
+
   const dispatch = useDispatch();
-  const handleClickButton = dispatch(searchMovies(query)) /*moviesThunks*/
+
+  const handleSearch = (query: string) => {
+    dispatch(searchMovies(query)) /*  сюда надо экш но у нас его нет т.к. мы используем toolkit */
+  };
+
 
   return (
     <Paper
@@ -20,7 +30,7 @@ export const Search = () => {
         alignItems: 'center',
         width: 400
       }}
-      >
+    >
       <InputBase
         sx={{
           ml: 1,
@@ -28,15 +38,15 @@ export const Search = () => {
         }}
         placeholder="Search"
         value={query}
-        onChange={handleChangeQuery}
+        onKeyUp={handleChangeQuery}
       />
       <IconButton
         type="button"
         sx={{ p: '10px' }}
         aria-label="search"
-        onClick={handleClickButton}
+        onClick={handleSearch}
       >
-        <SearchIcon/>
+        <SearchIcon />
       </IconButton>
     </Paper>
   );
