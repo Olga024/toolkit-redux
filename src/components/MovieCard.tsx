@@ -1,17 +1,24 @@
-export const MovieCard = () => {
-    return (
-            <div>
-                
-            </div>
-    )
+import { Card, CardMedia, CardContent, Typography } from '@mui/material';
+
+interface MovieCardProps {
+    movie: {
+        Title: string;
+        Year: string;
+        Poster: string;
+        imdbID: string;
+    };
 }
 
+const MovieCard = ({ movie }: MovieCardProps) => {
+    return (
+        <Card>
+            <CardMedia component="img" image={movie.Poster} alt={movie.Title} />
+            <CardContent>
+                <Typography variant="h5">{movie.Title}</Typography>
+                <Typography variant="body2">{movie.Year}</Typography>
+            </CardContent>
+        </Card>
+    );
+};
 
-/*постер фильма(Poster)
-название фильма(Title)
-год выпуска(Year)
-жанр(Genre)
-продолжительность(Runtime)
-режиссер(Director)
-актеры(Actors)
-рейтинг фильма(imdbRating)*/
+export default MovieCard;

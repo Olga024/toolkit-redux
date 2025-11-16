@@ -38,7 +38,5 @@ export const moviesSlice = createSlice({
 export const { setMovies, setStatus, setError } = moviesSlice.actions;
 
 export const selectMovies = (state: { movies: MoviesState }) => state.movies.movies;
-export const selectMovieById = (id: string) => (state: { movies: MoviesState }) =>
-    state.movies.movies.find((movie) => movie.imdbID === id);
 
 export default moviesSlice.reducer;

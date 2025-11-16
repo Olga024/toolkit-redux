@@ -1,17 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import { Search } from './components/Search';
 import { MovieDetailsPage } from './pages/MovieDetailsPage';
-import { FavoritesPage } from './pages/FavoritesPage';
+import FavoritesPage from './pages/FavoritesPage';
+import HomePage from './pages/HomePage';
 
 function App() {
 
   return (
     <Router>
       <Routes>
-        <Route path="/film/:id" element={<MovieDetailsPage/>} />
-        <Route path="/favorites" element={<FavoritesPage/>} />
-        <Route  path="*" element={<Search/>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/movie/:id" element={<MovieDetailsPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </Router>
   )

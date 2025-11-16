@@ -14,4 +14,4 @@ export const getMovieById = async (id: string): Promise<any> => {
         `https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`
     );
     return response.data;
-}
+};
