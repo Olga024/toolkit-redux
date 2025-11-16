@@ -1,6 +1,6 @@
 import { Card, CardMedia, CardContent, Typography } from '@mui/material';
 
-interface MovieDetailsProps {
+type TMovieDetailsProps = {
     movie: {
         Title: string;
         Year: string;
@@ -11,9 +11,9 @@ interface MovieDetailsProps {
         Actors: string;
         imdbRating: string;
     };
-}
+};
 
-const MovieDetails = ({ movie }: MovieDetailsProps) => {
+export const MovieDetails = ({ movie }: TMovieDetailsProps) => {
     return (
         <Card>
             <CardMedia component="img" image={movie.Poster} alt={movie.Title} />
@@ -29,14 +29,3 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
         </Card>
     );
 };
-
-export default MovieDetails;
-
-/*постер фильма(Poster)
-название фильма(Title)
-год выпуска(Year)
-жанр(Genre)
-продолжительность(Runtime)
-режиссер(Director)
-актеры(Actors)
-рейтинг фильма(imdbRating)*/

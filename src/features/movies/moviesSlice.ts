@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export interface Movie {
+export type TMovie = {
     Title: string;
     Year: string;
     Poster: string;
     imdbID: string;
 }
 
-export interface MoviesState {
-    movies: Movie[];
+export type TMoviesState = {
+    movies: TMovie[];
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: string | null;
 }
 
-const initialState: MoviesState = {
+const initialState: TMoviesState = {
     movies: [],
     status: 'idle',
     error: null,
@@ -37,6 +37,10 @@ export const moviesSlice = createSlice({
 
 export const { setMovies, setStatus, setError } = moviesSlice.actions;
 
-export const selectMovies = (state: { movies: MoviesState }) => state.movies.movies;
+export const selectMovies = (state: { movies: TMoviesState }) => state.movies.movies;
+
+export const selectMovieById = (id: string | undefined) => (state: { movies: TMoviesState }) => {
+    return state.movies.movies.find((movie) => movie.imdbID === id);
+};
 
 export default moviesSlice.reducer;

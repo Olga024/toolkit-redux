@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import { MovieDetailsPage } from './pages/MovieDetailsPage';
 import FavoritesPage from './pages/FavoritesPage';
 import HomePage from './pages/HomePage';
+import MovieDetailsPage from './pages/MovieDetailsPage';
 
 function App() {
 
